@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Bus" representedClassName="Bus" syncable="YES" codeGenerationType="class">
+        <attribute name="carreira" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="codigo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comeco" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destino" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="interface" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="localizacao" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="microzona" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentido" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="carreira"/>
+                <constraint value="destino"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Bus" positionX="-54" positionY="-9" width="128" height="165"/>
+    </elements>
+</model>
