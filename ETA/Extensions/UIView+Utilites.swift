@@ -2,7 +2,7 @@
 //  UIView+Utilites.swift
 //  ETA
 //
-//  Created by Jaime Remedios on 05/12/2017.
+//  Created by Pedro Remedios on 05/12/2017.
 //  Copyright © 2017 Pedro Remedios. All rights reserved.
 //
 

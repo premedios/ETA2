@@ -2,7 +2,7 @@
 //  BusNumberViewModel.swift
 //  ETA
 //
-//  Created by Jaime Remedios on 28/11/2017.
+//  Created by Pedro Remedios on 28/11/2017.
 //  Copyright © 2017 Pedro Remedios. All rights reserved.
 //
 

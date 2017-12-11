@@ -2,7 +2,7 @@
 //  BusStopsSectionHeaderReusableView.swift
 //  ETA
 //
-//  Created by Jaime Remedios on 10/12/2017.
+//  Created by Pedro Remedios on 10/12/2017.
 //  Copyright © 2017 Pedro Remedios. All rights reserved.
 //
 
