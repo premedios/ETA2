@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BusStopsViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
+class BusStopsViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
     
     private let busStopCellId = "busStopCell"
     private let sectionHeaderId = "sectionHeaderId"
@@ -25,12 +25,30 @@ class BusStopsViewController : UICollectionViewController, UICollectionViewDeleg
         return frc
     }()
     
+    lazy var searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        sb.placeholder = "Enter the bus stop code"
+        return sb
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        cv.backgroundColor = UIColor.AppColors.lightCyan
+        cv.register(BusStopCollectionViewCell.self, forCellWithReuseIdentifier: busStopCellId)
+        cv.register(BusStopsSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
+        (cv.collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
+//        let layout = cv.collectionViewLayout as? UICollectionViewFlowLayout {
+//        layout.sectionHeadersPinToVisibleBounds = true
+        cv.delegate = self
+        cv.dataSource = self
+        return cv
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(handleSearch))
         navigationItem.rightBarButtonItem = searchBarButtonItem
-        collectionView?.backgroundColor = .white
         navigationItem.title = "Bus \(busNumber) stops"
         do {
             try fetchedResultsController.performFetch()
@@ -38,12 +56,11 @@ class BusStopsViewController : UICollectionViewController, UICollectionViewDeleg
             fatalError("Unable to set up fetched results controller")
         }
         
-        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.sectionHeadersPinToVisibleBounds = true
-        }
+        view.addSubview(searchBar)
+        view.addSubview(collectionView)
         
-        collectionView?.register(BusStopCollectionViewCell.self, forCellWithReuseIdentifier: busStopCellId)
-        collectionView?.register(BusStopsSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
+        searchBar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, centerX: nil, centerY: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        collectionView.anchor(top: searchBar.bottomAnchor, leading: searchBar.leadingAnchor, bottom: view.bottomAnchor, trailing: searchBar.trailingAnchor, centerX: nil, centerY: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     @objc func handleSearch() {
@@ -51,20 +68,20 @@ class BusStopsViewController : UICollectionViewController, UICollectionViewDeleg
     }
     
     // MARK: - UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard let sections = fetchedResultsController.sections else { return 0 }
         print("\(sections.count) sections")
         return sections.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections else { return 0 }
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
     
     // MARK: - UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: busStopCellId, for: indexPath) as! BusStopCollectionViewCell
         let object = fetchedResultsController.object(at: indexPath)
         guard let paragem = object.localizacao else { return cell }
@@ -87,7 +104,7 @@ class BusStopsViewController : UICollectionViewController, UICollectionViewDeleg
         return 4
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId, for: indexPath) as! BusStopsSectionHeaderReusableView
         let sectionInfo = fetchedResultsController.sections?[indexPath.section]
         view.setup(withTitle: sectionInfo?.name ?? "")

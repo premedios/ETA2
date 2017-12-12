@@ -67,7 +67,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let busObject = results[indexPath.row] as? [String:String], let busNumber = busObject["carreira"] else { return }
         //print(item["carreira"]!)
-        let busStopsViewController = BusStopsViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        let busStopsViewController = ViewControllerTest()
+        let busStopsViewController = BusStopsViewController()
         busStopsViewController.busNumber = busNumber
         navigationController?.pushViewController(busStopsViewController, animated: true)
     }
