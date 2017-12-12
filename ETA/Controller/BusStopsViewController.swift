@@ -27,13 +27,15 @@ class BusStopsViewController : UIViewController, UICollectionViewDelegate, UICol
     
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
+        sb.backgroundColor = UIColor.AppColors.lightCyan
         sb.placeholder = "Enter the bus stop code"
+        sb.delegate = self
         return sb
     }()
     
     lazy var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        cv.backgroundColor = UIColor.AppColors.lightCyan
+        cv.backgroundColor = .white
         cv.register(BusStopCollectionViewCell.self, forCellWithReuseIdentifier: busStopCellId)
         cv.register(BusStopsSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
         (cv.collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
@@ -113,6 +115,20 @@ class BusStopsViewController : UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 50)
+    }
+    
+    // MARK: - UISearchBarDelegate
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
     
 }

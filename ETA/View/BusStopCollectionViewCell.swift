@@ -12,14 +12,14 @@ class BusStopCollectionViewCell : UICollectionViewCell {
 
     private let busStopNameLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.Vision.regular, size: 20)
+        label.font = UIFont(name: UIFont.Vision.bold, size: 20)
         label.textColor = UIColor.AppColors.navyBlue
         return label
     }()
     
     private let busStopCodeLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.Vision.light, size: 18)
+        label.font = UIFont(name: UIFont.Vision.bold, size: 14)
         label.textColor = UIColor.AppColors.navyBlue
         return label
     }()
