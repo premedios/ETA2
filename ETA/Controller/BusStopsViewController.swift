@@ -16,7 +16,7 @@ struct MessageResultNotification {
 
     var leftView: UIImageView!
     var message: (title: String, subTitle: String)!
-    //var style: BannerStyle
+    var style: BannerStyle
 
     init(result: MessageComposeResult) {
         self.result = result
@@ -24,15 +24,15 @@ struct MessageResultNotification {
         case MessageComposeResult.sent:
             self.leftView = UIImageView(image: #imageLiteral(resourceName: "success"))
             self.message = ("Message sent!", "You will be receiving an answer shortly")
-            //self.style = .success
+            self.style = .success
         case MessageComposeResult.cancelled:
             self.leftView = UIImageView(image: #imageLiteral(resourceName: "warning"))
             self.message = ("Message not sent!", "You have cancelled sending")
-            //self.style = .warning
+            self.style = .warning
         case MessageComposeResult.failed:
             self.leftView = UIImageView(image: #imageLiteral(resourceName: "error"))
             self.message = ("Message not sent!", "Please contact your mobile carrier")
-            //self.style = .danger
+            self.style = .danger
         }
     }
 }
@@ -136,11 +136,11 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
     func messageComposeViewController(_ controller: MFMessageComposeViewController,
                                       didFinishWith result: MessageComposeResult) {
         dismiss(animated: true, completion: {
-//            let messageResultNotification = MessageResultNotification(result: result)
-//            NotificationBanner(title: messageResultNotification.message.title,
-//                               subtitle: messageResultNotification.message.subTitle,
-//                               leftView: messageResultNotification.leftView, rightView: nil,
-//                               style: messageResultNotification.style).show()
+            let messageResultNotification = MessageResultNotification(result: result)
+            NotificationBanner(title: messageResultNotification.message.title,
+                               subtitle: messageResultNotification.message.subTitle,
+                               leftView: messageResultNotification.leftView, rightView: nil,
+                               style: messageResultNotification.style).show()
         })
     }
 
