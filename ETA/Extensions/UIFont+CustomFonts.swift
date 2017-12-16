@@ -23,4 +23,13 @@ extension UIFont {
         static let thinItalic = "Vision-ThinItalic"
         static let light = "Vision-Light"
     }
+
+    static func listInstalledFonts() {
+        UIFont.familyNames.forEach { (familyName) in
+            print(familyName)
+            UIFont.fontNames(forFamilyName: familyName).forEach({ (fontNames) in
+                print("== \(fontNames)")
+            })
+        }
+    }
 }

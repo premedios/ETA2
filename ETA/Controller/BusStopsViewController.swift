@@ -8,127 +8,195 @@
 
 import UIKit
 import CoreData
+import MessageUI
+import NotificationBanner
 
-class BusStopsViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
-    
+struct MessageResultNotification {
+    private var result: MessageComposeResult
+
+    var leftView: UIImageView!
+    var message: (title: String, subTitle: String)!
+    //var style: BannerStyle
+
+    init(result: MessageComposeResult) {
+        self.result = result
+        switch result {
+        case MessageComposeResult.sent:
+            self.leftView = UIImageView(image: #imageLiteral(resourceName: "success"))
+            self.message = ("Message sent!", "You will be receiving an answer shortly")
+            //self.style = .success
+        case MessageComposeResult.cancelled:
+            self.leftView = UIImageView(image: #imageLiteral(resourceName: "warning"))
+            self.message = ("Message not sent!", "You have cancelled sending")
+            //self.style = .warning
+        case MessageComposeResult.failed:
+            self.leftView = UIImageView(image: #imageLiteral(resourceName: "error"))
+            self.message = ("Message not sent!", "Please contact your mobile carrier")
+            //self.style = .danger
+        }
+    }
+}
+
+class BusStopsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
+                              NSFetchedResultsControllerDelegate, UISearchResultsUpdating,
+                              MFMessageComposeViewControllerDelegate {
+
     private let busStopCellId = "busStopCell"
     private let sectionHeaderId = "sectionHeaderId"
-    
+
     var busNumber = ""
-    
-    private lazy var fetchedResultsController : NSFetchedResultsController<Bus> = {
-        let fetchRequest : NSFetchRequest<Bus> = Bus.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "destino", ascending: false), NSSortDescriptor(key: "codigo", ascending: true)]
+
+    private var searchText: String?
+
+    private lazy var fetchedResultsController: NSFetchedResultsController<Bus> = {
+        let fetchRequest: NSFetchRequest<Bus> = Bus.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "destino", ascending: false),
+        NSSortDescriptor(key: "codigo", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "carreira = %@", busNumber)
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.sharedManager.mainContext, sectionNameKeyPath: "destino", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
+          managedObjectContext: CoreDataManager.sharedManager.mainContext,
+          sectionNameKeyPath: "destino", cacheName: nil)
         frc.delegate = self
         return frc
     }()
-    
-    lazy var searchBar: UISearchBar = {
-        let sb = UISearchBar()
-        sb.backgroundColor = UIColor.AppColors.lightCyan
-        sb.placeholder = "Enter the bus stop code"
-        sb.delegate = self
-        return sb
-    }()
-    
-    lazy var collectionView: UICollectionView = {
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        cv.backgroundColor = .white
-        cv.register(BusStopCollectionViewCell.self, forCellWithReuseIdentifier: busStopCellId)
-        cv.register(BusStopsSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
-        (cv.collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
-//        let layout = cv.collectionViewLayout as? UICollectionViewFlowLayout {
-//        layout.sectionHeadersPinToVisibleBounds = true
-        cv.delegate = self
-        cv.dataSource = self
-        return cv
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(handleSearch))
-        navigationItem.rightBarButtonItem = searchBarButtonItem
-        navigationItem.title = "Bus \(busNumber) stops"
+
+        navigationItem.title = "Bus \(busNumber)"
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            fatalError("Unable to set up fetched results controller")
+            UIAlertController(title: "Error",
+            message: "There was an error retrieving bus stops for this bus. Please contact the developer.",
+          preferredStyle: .alert).show(self, sender: nil)
         }
-        
-        view.addSubview(searchBar)
-        view.addSubview(collectionView)
-        
-        searchBar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, centerX: nil, centerY: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        collectionView.anchor(top: searchBar.bottomAnchor, leading: searchBar.leadingAnchor, bottom: view.bottomAnchor, trailing: searchBar.trailingAnchor, centerX: nil, centerY: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+
+        setupUI()
+
+        definesPresentationContext = true
     }
-    
-    @objc func handleSearch() {
-        print("Searching...")
+
+    fileprivate func setupUI() {
+        collectionView?.backgroundColor = .white
+        collectionView?.register(BusStopCollectionViewCell.self, forCellWithReuseIdentifier: busStopCellId)
+        collectionView?.register(BusStopsSectionHeaderReusableView.self,
+                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                 withReuseIdentifier: sectionHeaderId)
+        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.sectionHeadersPinToVisibleBounds = true
+        }
+
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for a bus stop code"
+        searchController.searchBar.keyboardType = .phonePad
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
+
     // MARK: - UICollectionViewDataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard let sections = fetchedResultsController.sections else { return 0 }
-        print("\(sections.count) sections")
         return sections.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections else { return 0 }
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
-    
+
     // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: busStopCellId, for: indexPath) as! BusStopCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: busStopCellId, for: indexPath)
+        guard let busStopCollectionViewCell = cell as? BusStopCollectionViewCell else { return cell }
         let object = fetchedResultsController.object(at: indexPath)
-        guard let paragem = object.localizacao else { return cell }
-        guard let codigo = object.codigo else { return cell }
-        cell.setup(withData: BusStopViewModel(stopName: paragem, stopCode: codigo))
+        guard let paragem = object.localizacao, let codigo = object.codigo else { return cell }
+        busStopCollectionViewCell.setup(withModel: BusStopViewModel(stopName: paragem, stopCode: codigo))
+
         return cell
     }
-    
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if MFMessageComposeViewController.canSendText() {
+            let object = fetchedResultsController.object(at: indexPath)
+            guard let codigo = object.codigo else { return }
+            let messageComposeViewController = MFMessageComposeViewController()
+            messageComposeViewController.messageComposeDelegate = self
+            messageComposeViewController.recipients = ["3599"]
+            messageComposeViewController.body = "C \(codigo)"
+            present(messageComposeViewController, animated: true, completion: nil)
+        }
+    }
+
+    // MARK: - MFMessageComposeViewControllerDelegate
+    func messageComposeViewController(_ controller: MFMessageComposeViewController,
+                                      didFinishWith result: MessageComposeResult) {
+        dismiss(animated: true, completion: {
+//            let messageResultNotification = MessageResultNotification(result: result)
+//            NotificationBanner(title: messageResultNotification.message.title,
+//                               subtitle: messageResultNotification.message.subTitle,
+//                               leftView: messageResultNotification.leftView, rightView: nil,
+//                               style: messageResultNotification.style).show()
+        })
+    }
+
     // MARK: - UICollectionViewFlowLayoutDelegate
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width-8, height: 60)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 4
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId, for: indexPath) as! BusStopsSectionHeaderReusableView
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 viewForSupplementaryElementOfKind kind: String,
+                                 at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        withReuseIdentifier: sectionHeaderId, for: indexPath)
+        guard let busStopSectionHeaderReusableView = view as? BusStopsSectionHeaderReusableView else { return view }
         let sectionInfo = fetchedResultsController.sections?[indexPath.section]
-        view.setup(withTitle: sectionInfo?.name ?? "")
+        busStopSectionHeaderReusableView.setup(withTitle: sectionInfo?.name ?? "")
         return view
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 50)
     }
-    
-    // MARK: - UISearchBarDelegate
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
+
+    // MARK: - UISearchUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+
+        if searchText != "" {
+            fetchedResultsController.fetchRequest.predicate =
+                NSPredicate(format: "carreira = %@ and codigo beginswith[cd] %@", busNumber, searchText)
+        } else {
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "carreira = %@", busNumber)
+        }
+        do {
+            try fetchedResultsController.performFetch()
+            collectionView?.reloadData()
+        } catch {
+            UIAlertController(title: "Search Error",
+                              message: "An error ocurred performing a serch. Please contact the developer.",
+                              preferredStyle: UIAlertControllerStyle.alert).show(self, sender: nil)
+        }
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.endEditing(true)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
-    }
-    
 }

@@ -8,38 +8,47 @@
 
 import UIKit
 
-class BusStopsSectionHeaderReusableView : UICollectionReusableView {
+class BusStopsSectionHeaderReusableView: UICollectionReusableView {
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.AppColors.navyBlue
         return view
     }()
-    
-    private let sectionLabel : UILabel = {
+
+    private let sectionLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.AppColors.linen
         label.font = UIFont(name: UIFont.Vision.heavy, size: 20)
         return label
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         backgroundColor = .white
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setup(withTitle sectionTitle:String) {
-        
+
+    func setup(withTitle sectionTitle: String) {
+
         sectionLabel.text = sectionTitle
-        
+
         addSubview(backgroundView)
         backgroundView.addSubview(sectionLabel)
-    
-        backgroundView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, centerX: nil, centerY: nil, paddingTop: 4, paddingLeft: 4, paddingBottom: 4, paddingRight: 4, width: 0, height: 0)
-        sectionLabel.anchor(top: nil, leading: backgroundView.leadingAnchor, bottom: nil, trailing: nil, centerX: nil, centerY: backgroundView.centerYAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+
+        backgroundView.pinAnchor(top: (anchor: topAnchor, constant: 4),
+                                 leading: (anchor: leadingAnchor, constant: 4),
+                                 bottom: (anchor: bottomAnchor, constant: 4),
+                                 trailing: (anchor: trailingAnchor, constant: 4))
+
+        sectionLabel.pinAnchor(top: nil,
+                               leading: (anchor: backgroundView.leadingAnchor, constant: 8),
+                               bottom: nil,
+                               trailing: nil)
+        sectionLabel.centerAnchor(centerX: nil,
+                                  centerY: (anchor: backgroundView.centerYAnchor, constant: 0))
     }
 }

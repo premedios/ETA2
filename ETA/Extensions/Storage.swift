@@ -12,7 +12,7 @@ import CoreData
 
 /// NSPersistentStoreCoordinator extension
 extension NSPersistentStoreCoordinator {
-  
+
   /// NSPersistentStoreCoordinator error types
   public enum CoordinatorError: Error {
     /// .momd file not found
@@ -22,46 +22,45 @@ extension NSPersistentStoreCoordinator {
     /// Gettings document directory fail
     case storePathNotFound
   }
-  
+
   /// Return NSPersistentStoreCoordinator object
   static func coordinator(name: String) throws -> NSPersistentStoreCoordinator? {
-    
+
     guard let modelURL = Bundle.main.url(forResource: name, withExtension: "momd") else {
       throw CoordinatorError.modelFileNotFound
     }
-    
+
     guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
       throw CoordinatorError.modelCreationError
     }
-    
+
     let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-    
+
     guard let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
       throw CoordinatorError.storePathNotFound
     }
-    
+
     do {
       let url = documents.appendingPathComponent("\(name).sqlite")
-      let options = [ NSMigratePersistentStoresAutomaticallyOption : true,
-                      NSInferMappingModelAutomaticallyOption : true ]
+      let options = [NSMigratePersistentStoresAutomaticallyOption: true,
+                     NSInferMappingModelAutomaticallyOption: true ]
       try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
     } catch {
       throw error
     }
-    
+
     return coordinator
   }
 }
 
 struct Storage {
-  
   var shouldUpdate = false
   static var shared = Storage()
-  
+
   @available(iOS 10.0, *)
   private lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "Places")
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { (_, error) in
       guard error == nil else {
         print("CoreData: Unresolved error \(error!)")
         return
@@ -69,7 +68,7 @@ struct Storage {
     }
     return container
   }()
-  
+
   private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
     do {
       return try NSPersistentStoreCoordinator.coordinator(name: "Places")
@@ -78,7 +77,7 @@ struct Storage {
     }
     return nil
   }()
-  
+
   private lazy var managedObjectContext: NSManagedObjectContext = {
     let coordinator = self.persistentStoreCoordinator
     var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
@@ -87,7 +86,7 @@ struct Storage {
     managedObjectContext.persistentStoreCoordinator = coordinator
     return managedObjectContext
   }()
-  
+
   private lazy var privateManagedObjectContext: NSManagedObjectContext = {
     var managedObjectContext = self.persistentContainer.newBackgroundContext()
     managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -96,19 +95,19 @@ struct Storage {
     managedObjectContext.automaticallyMergesChangesFromParent = true
     return managedObjectContext
   }()
-  
+
   // MARK: Public methods
-  
+
   enum SaveStatus {
     case saved, rolledBack, hasNoChanges
   }
-  
+
   var context: NSManagedObjectContext {
     mutating get {
         return persistentContainer.viewContext
     }
   }
-  
+
   var backgroundContext: NSManagedObjectContext {
     mutating get {
 //      if #available(iOS 10.0, *) {
@@ -119,7 +118,7 @@ struct Storage {
       return privateManagedObjectContext
     }
   }
-  
+
   mutating func save() -> SaveStatus {
     if context.hasChanges {
       do {
@@ -132,5 +131,5 @@ struct Storage {
     }
     return .hasNoChanges
   }
-  
+
 }

@@ -1,0 +1,23 @@
+/*
+ Localizable.strings
+ ETA
+ 
+ Created by Jaime Remedios on 15/12/2017.
+ Copyright © 2017 Pedro Remedios. All rights reserved.
+*/
+
+/* MainViewController */
+"Buses" = "Autocarros";
+"There was an error fetching the list of bus numbers. Please contact the developer." = "Ocorreu um erro ao buscar a lista de números de autocarros. Entre em contato com o autor desta aplicação.";
+
+/* BusStopsViewController */
+"Bus %@" = "Autocarro %@";
+"There was an error retrieving bus stops for this bus. Please contact the developer." = "Ocorreu um erro ao buscar as paragens para este autocarro. Entre em contato com o autor deste aplicação.";
+"Message sent!" = "Mensagem enviada";
+"You will be receiving an answer shortly" = "Receberá uma resposta em breve";
+"Message not sent!" = "Mensagem não enviada!";
+"You have cancelled sending" = "Cancelou o envio";
+"Please contact your mobile carrier" = "Entre em contato com o seu operador de telecomunicação.";
+
+/* common */
+"Error" = "Erro";

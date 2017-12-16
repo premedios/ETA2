@@ -9,5 +9,5 @@
 import Foundation
 
 struct BusNumberViewModel {
-    var carreira : String
+    var carreira: String
 }

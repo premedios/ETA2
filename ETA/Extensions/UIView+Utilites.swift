@@ -9,38 +9,50 @@
 import UIKit
 
 extension UIView {
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?,  centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat) {
-        
+
+    func pinAnchor(top: (anchor: NSLayoutYAxisAnchor, constant: CGFloat)?,
+                   leading: (anchor: NSLayoutXAxisAnchor, constant: CGFloat)?,
+                   bottom: (anchor: NSLayoutYAxisAnchor, constant: CGFloat)?,
+                   trailing: (anchor: NSLayoutXAxisAnchor, constant: CGFloat)?) {
+
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         if let top = top {
-            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
+            topAnchor.constraint(equalTo: top.anchor, constant: top.constant).isActive = true
         }
-        
+
         if let leading = leading {
-            self.leadingAnchor.constraint(equalTo: leading, constant: paddingLeft).isActive = true
+            leadingAnchor.constraint(equalTo: leading.anchor, constant: leading.constant).isActive = true
         }
-        
+
         if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
+            bottomAnchor.constraint(equalTo: bottom.anchor, constant: -bottom.constant).isActive = true
         }
-        
+
         if let trailing = trailing {
-            trailingAnchor.constraint(equalTo: trailing, constant: -paddingRight).isActive = true
+            trailingAnchor.constraint(equalTo: trailing.anchor, constant: -trailing.constant).isActive = true
         }
-        
+    }
+
+    func centerAnchor(centerX: (anchor: NSLayoutXAxisAnchor, constant: CGFloat)?,
+                      centerY: (anchor: NSLayoutYAxisAnchor, constant: CGFloat)?) {
+
+        translatesAutoresizingMaskIntoConstraints = false
+
         if let centerX = centerX {
-            centerXAnchor.constraint(equalTo: centerX).isActive = true
+            centerXAnchor.constraint(equalTo: centerX.anchor, constant: centerX.constant).isActive = true
         }
-        
+
         if let centerY = centerY {
-            centerYAnchor.constraint(equalTo: centerY).isActive = true
+            centerYAnchor.constraint(equalTo: centerY.anchor, constant: centerY.constant).isActive = true
         }
-        
+    }
+
+    func sizeAnchor(width: CGFloat, height: CGFloat) {
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
-        
+
         if height != 0 {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }

@@ -19,7 +19,7 @@
 		6F57BB141FD0B0A600614F76 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57BB131FD0B0A600614F76 /* UIColor+Utilities.swift */; };
 		6F57BB161FD0C23200614F76 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57BB151FD0C23200614F76 /* UIColor+AppColors.swift */; };
 		6F60E3621F8F68070065A168 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F60E3611F8F68060065A168 /* Storage.swift */; };
-		6F7FC1011F8E1BF9000A64DA /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 6F7FC1001F8E1BF9000A64DA /* Cartfile */; };
+		6F87A4571FE4559200C9BE2A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F87A4591FE4559200C9BE2A /* Localizable.strings */; };
 		6FA435111FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA435101FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift */; };
 		6FAAF8601F8CD4D90039F007 /* stops.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAF85F1F8CD4D90039F007 /* stops.csv */; };
 		6FBBCE981F8D79E100108DAB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBCE961F8D79E100108DAB /* MainViewController.swift */; };
@@ -27,6 +27,9 @@
 		6FDA0C391FCDB9910000DE56 /* BusNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA0C381FCDB9900000DE56 /* BusNumberViewModel.swift */; };
 		6FDD5E331FCAEC4C00DA3B30 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDD5E321FCAEC4C00DA3B30 /* CoreDataManager.swift */; };
 		6FDD5E4A1FCB67DB00DA3B30 /* ETA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6FDD5E421FCB627900DA3B30 /* ETA.sqlite */; };
+		6FE265791FE57BC800DD5F63 /* MarqueeLabelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE265781FE57BC800DD5F63 /* MarqueeLabelSwift.framework */; };
+		6FE2657B1FE57BD400DD5F63 /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE2657A1FE57BD400DD5F63 /* NotificationBanner.framework */; };
+		6FE2657D1FE57BDC00DD5F63 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE2657C1FE57BDC00DD5F63 /* SnapKit.framework */; };
 		6FEA6CFE1FDAF3E000F212AB /* Vision-Thin italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF21FDAF3D700F212AB /* Vision-Thin italic.otf */; };
 		6FEA6CFF1FDAF3E000F212AB /* Vision-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF31FDAF3D800F212AB /* Vision-Thin.otf */; };
 		6FEA6D001FDAF3E000F212AB /* Vision-Black italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF41FDAF3D900F212AB /* Vision-Black italic.otf */; };
@@ -91,7 +94,7 @@
 		6F57BB131FD0B0A600614F76 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		6F57BB151FD0C23200614F76 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		6F60E3611F8F68060065A168 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		6F7FC1001F8E1BF9000A64DA /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		6F87A4581FE4559200C9BE2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6FA435101FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsSectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		6FAAF85F1F8CD4D90039F007 /* stops.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.csv; sourceTree = "<group>"; };
 		6FBBCE961F8D79E100108DAB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +102,10 @@
 		6FDA0C381FCDB9900000DE56 /* BusNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusNumberViewModel.swift; sourceTree = "<group>"; };
 		6FDD5E321FCAEC4C00DA3B30 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6FDD5E421FCB627900DA3B30 /* ETA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = ETA.sqlite; path = "../../Library/Application Support/ETACoreDataImport/ETA.sqlite"; sourceTree = "<group>"; };
+		6FE265721FE5671D00DD5F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6FE265781FE57BC800DD5F63 /* MarqueeLabelSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabelSwift.framework; path = ../Carthage/Build/iOS/MarqueeLabelSwift.framework; sourceTree = "<group>"; };
+		6FE2657A1FE57BD400DD5F63 /* NotificationBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationBanner.framework; path = ../Carthage/Build/iOS/NotificationBanner.framework; sourceTree = "<group>"; };
+		6FE2657C1FE57BDC00DD5F63 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		6FEA6CF21FDAF3D700F212AB /* Vision-Thin italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vision-Thin italic.otf"; sourceTree = "<group>"; };
 		6FEA6CF31FDAF3D800F212AB /* Vision-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vision-Thin.otf"; sourceTree = "<group>"; };
 		6FEA6CF41FDAF3D900F212AB /* Vision-Black italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vision-Black italic.otf"; sourceTree = "<group>"; };
@@ -113,6 +120,8 @@
 		6FEA6CFD1FDAF3DF00F212AB /* Vision-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vision-Black.otf"; sourceTree = "<group>"; };
 		6FEA6D0A1FDAF9B400F212AB /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		6FEA6D0C1FDB01A500F212AB /* BusStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewController.swift; sourceTree = "<group>"; };
+		6FF47FEB1FE5369C00592779 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6FF47FEC1FE536CE00592779 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +129,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FE2657D1FE57BDC00DD5F63 /* SnapKit.framework in Frameworks */,
+				6FE265791FE57BC800DD5F63 /* MarqueeLabelSwift.framework in Frameworks */,
+				6FE2657B1FE57BD400DD5F63 /* NotificationBanner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +231,9 @@
 		6F7FC1021F8E2FD4000A64DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FE2657C1FE57BDC00DD5F63 /* SnapKit.framework */,
+				6FE2657A1FE57BD400DD5F63 /* NotificationBanner.framework */,
+				6FE265781FE57BC800DD5F63 /* MarqueeLabelSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -256,9 +271,9 @@
 			isa = PBXGroup;
 			children = (
 				6FEA6CF11FDAF39700F212AB /* Fonts */,
-				6F7FC1001F8E1BF9000A64DA /* Cartfile */,
 				6F29FA681F8B790800683E08 /* Assets.xcassets */,
 				6FAAF85F1F8CD4D90039F007 /* stops.csv */,
+				6F87A4591FE4559200C9BE2A /* Localizable.strings */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -294,6 +309,7 @@
 				6F29FA5C1F8B790800683E08 /* Resources */,
 				6F7FC1071F8E2FE3000A64DA /* ShellScript */,
 				6FDD5E461FCB670A00DA3B30 /* CopyFiles */,
+				6FE265731FE56DAA00DD5F63 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -373,6 +389,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-PT",
+				"pt-BR",
 			);
 			mainGroup = 6F29FA551F8B790800683E08;
 			productRefGroup = 6F29FA5F1F8B790800683E08 /* Products */;
@@ -391,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F87A4571FE4559200C9BE2A /* Localizable.strings in Resources */,
 				6FEA6D051FDAF3E000F212AB /* Vision-LightItalic.otf in Resources */,
 				6FEA6D061FDAF3E000F212AB /* Vision-Regular italic.otf in Resources */,
 				6FEA6CFF1FDAF3E000F212AB /* Vision-Thin.otf in Resources */,
@@ -399,7 +418,6 @@
 				6FDD5E4A1FCB67DB00DA3B30 /* ETA.sqlite in Resources */,
 				6FEA6D041FDAF3E000F212AB /* Vision-Heavy.otf in Resources */,
 				6FEA6D081FDAF3E000F212AB /* Vision-BoldItalic.otf in Resources */,
-				6F7FC1011F8E1BF9000A64DA /* Cartfile in Resources */,
 				6FEA6D091FDAF3E000F212AB /* Vision-Black.otf in Resources */,
 				6FEA6D021FDAF3E000F212AB /* Vision.otf in Resources */,
 				6FEA6D031FDAF3E000F212AB /* Vision-Light.otf in Resources */,
@@ -433,12 +451,31 @@
 			files = (
 			);
 			inputPaths = (
+				"$(HOME)/Developer/Carthage/Build/iOS/SnapKit.framework",
+				"$(HOME)/Developer/Carthage/Build/iOS/NotificationBanner.framework",
+				"$(HOME)/Developer/Carthage/Build/iOS/MarqueeLabelSwift.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SnapKit.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NotificationBanner.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MarqueeLabelSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		6FE265731FE56DAA00DD5F63 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -497,11 +534,26 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		6F87A4591FE4559200C9BE2A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F87A4581FE4559200C9BE2A /* en */,
+				6FF47FEB1FE5369C00592779 /* pt-PT */,
+				6FF47FEC1FE536CE00592779 /* pt-BR */,
+				6FE265721FE5671D00DD5F63 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		6F29FA841F8B790900683E08 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -546,10 +598,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -559,6 +611,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -597,9 +650,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -614,9 +667,10 @@
 				DEVELOPMENT_TEAM = N2NF9KW4Q2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ETA/Other/Carthage/Build/iOS",
+					"$(HOME)/Developer/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ETA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -634,9 +688,10 @@
 				DEVELOPMENT_TEAM = N2NF9KW4Q2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ETA/Other/Carthage/Build/iOS",
+					"$(HOME)/Developer/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ETA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -656,6 +711,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ETA.app/ETA";
@@ -673,6 +729,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ETA.app/ETA";
@@ -689,6 +746,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETAUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ETA;
@@ -705,6 +763,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETAUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ETA;
