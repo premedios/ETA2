@@ -23,15 +23,18 @@ struct MessageResultNotification {
         switch result {
         case MessageComposeResult.sent:
             self.leftView = UIImageView(image: #imageLiteral(resourceName: "success"))
-            self.message = ("Message sent!", "You will be receiving an answer shortly")
+            self.message = (NSLocalizedString("Message sent!", comment: ""),
+                            NSLocalizedString("You will be receiving an answer shortly", comment: ""))
             self.style = .success
         case MessageComposeResult.cancelled:
             self.leftView = UIImageView(image: #imageLiteral(resourceName: "warning"))
-            self.message = ("Message not sent!", "You have cancelled sending")
+            self.message = (NSLocalizedString("Message not sent!", comment: ""),
+                            NSLocalizedString("You have cancelled sending", comment: ""))
             self.style = .warning
         case MessageComposeResult.failed:
             self.leftView = UIImageView(image: #imageLiteral(resourceName: "error"))
-            self.message = ("Message not sent!", "Please contact your mobile carrier")
+            self.message = (NSLocalizedString("Message not sent!", comment: ""),
+                            NSLocalizedString("Please contact your mobile carrier", comment: ""))
             self.style = .danger
         }
     }
@@ -60,21 +63,38 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
         return frc
     }()
 
+    fileprivate func showAlert(withTitle title: String, message: String) {
+        let title = NSLocalizedString(title, comment: "")
+        let message = NSLocalizedString(message, comment: "")
+        UIAlertController(title: title,
+                          message: message,
+                          preferredStyle: .alert).show(self, sender: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Bus \(busNumber)"
+        navigationItem.title = "\(NSLocalizedString("Bus", comment: "")) \(busNumber)"
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            UIAlertController(title: "Error",
-            message: "There was an error retrieving bus stops for this bus. Please contact the developer.",
-          preferredStyle: .alert).show(self, sender: nil)
+            showAlert(withTitle: "Error",
+                      message: "There was an error retrieving bus stops for this bus. Please contact the developer.")
         }
 
         setupUI()
 
         definesPresentationContext = true
+    }
+
+    fileprivate func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = NSLocalizedString("Search for a bus stop code", comment: "")
+        searchController.searchBar.keyboardType = .phonePad
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     fileprivate func setupUI() {
@@ -87,13 +107,7 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
             layout.sectionHeadersPinToVisibleBounds = true
         }
 
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search for a bus stop code"
-        searchController.searchBar.keyboardType = .phonePad
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        setupSearchController()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -194,8 +208,11 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
             try fetchedResultsController.performFetch()
             collectionView?.reloadData()
         } catch {
-            UIAlertController(title: "Search Error",
-                              message: "An error ocurred performing a serch. Please contact the developer.",
+            let title = NSLocalizedString("Search Error", comment: "")
+            let message = NSLocalizedString(
+                "An error ocurred performing a search. Please contact the developer.", comment: "")
+            UIAlertController(title: title,
+                              message: message,
                               preferredStyle: UIAlertControllerStyle.alert).show(self, sender: nil)
         }
     }

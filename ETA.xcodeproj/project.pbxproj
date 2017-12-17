@@ -19,7 +19,7 @@
 		6F57BB141FD0B0A600614F76 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57BB131FD0B0A600614F76 /* UIColor+Utilities.swift */; };
 		6F57BB161FD0C23200614F76 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57BB151FD0C23200614F76 /* UIColor+AppColors.swift */; };
 		6F60E3621F8F68070065A168 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F60E3611F8F68060065A168 /* Storage.swift */; };
-		6F87A4571FE4559200C9BE2A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F87A4591FE4559200C9BE2A /* Localizable.strings */; };
+		6F627B011FE5ED110054082A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F627AFF1FE5ED100054082A /* Localizable.strings */; };
 		6FA435111FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA435101FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift */; };
 		6FAAF8601F8CD4D90039F007 /* stops.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAF85F1F8CD4D90039F007 /* stops.csv */; };
 		6FBBCE981F8D79E100108DAB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBCE961F8D79E100108DAB /* MainViewController.swift */; };
@@ -94,7 +94,9 @@
 		6F57BB131FD0B0A600614F76 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		6F57BB151FD0C23200614F76 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		6F60E3611F8F68060065A168 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		6F87A4581FE4559200C9BE2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6F627B021FE5ED200054082A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6F627B031FE5ED4E0054082A /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6F627B041FE5ED550054082A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6FA435101FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsSectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		6FAAF85F1F8CD4D90039F007 /* stops.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.csv; sourceTree = "<group>"; };
 		6FBBCE961F8D79E100108DAB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 		6FDA0C381FCDB9900000DE56 /* BusNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusNumberViewModel.swift; sourceTree = "<group>"; };
 		6FDD5E321FCAEC4C00DA3B30 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6FDD5E421FCB627900DA3B30 /* ETA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = ETA.sqlite; path = "../../Library/Application Support/ETACoreDataImport/ETA.sqlite"; sourceTree = "<group>"; };
-		6FE265721FE5671D00DD5F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6FE265781FE57BC800DD5F63 /* MarqueeLabelSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabelSwift.framework; path = ../Carthage/Build/iOS/MarqueeLabelSwift.framework; sourceTree = "<group>"; };
 		6FE2657A1FE57BD400DD5F63 /* NotificationBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationBanner.framework; path = ../Carthage/Build/iOS/NotificationBanner.framework; sourceTree = "<group>"; };
 		6FE2657C1FE57BDC00DD5F63 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
@@ -120,8 +121,6 @@
 		6FEA6CFD1FDAF3DF00F212AB /* Vision-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vision-Black.otf"; sourceTree = "<group>"; };
 		6FEA6D0A1FDAF9B400F212AB /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		6FEA6D0C1FDB01A500F212AB /* BusStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewController.swift; sourceTree = "<group>"; };
-		6FF47FEB1FE5369C00592779 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		6FF47FEC1FE536CE00592779 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,10 +269,10 @@
 		6FAAF85E1F8CD3600039F007 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				6F627AFF1FE5ED100054082A /* Localizable.strings */,
 				6FEA6CF11FDAF39700F212AB /* Fonts */,
 				6F29FA681F8B790800683E08 /* Assets.xcassets */,
 				6FAAF85F1F8CD4D90039F007 /* stops.csv */,
-				6F87A4591FE4559200C9BE2A /* Localizable.strings */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -363,7 +362,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Pedro Remedios";
 				TargetAttributes = {
 					6F29FA5D1F8B790800683E08 = {
@@ -388,7 +387,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				"pt-PT",
 				"pt-BR",
 			);
@@ -409,7 +407,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F87A4571FE4559200C9BE2A /* Localizable.strings in Resources */,
 				6FEA6D051FDAF3E000F212AB /* Vision-LightItalic.otf in Resources */,
 				6FEA6D061FDAF3E000F212AB /* Vision-Regular italic.otf in Resources */,
 				6FEA6CFF1FDAF3E000F212AB /* Vision-Thin.otf in Resources */,
@@ -423,6 +420,7 @@
 				6FEA6D031FDAF3E000F212AB /* Vision-Light.otf in Resources */,
 				6FEA6D011FDAF3E000F212AB /* Vision-HeavyItalic.otf in Resources */,
 				6FAAF8601F8CD4D90039F007 /* stops.csv in Resources */,
+				6F627B011FE5ED110054082A /* Localizable.strings in Resources */,
 				6FEA6D071FDAF3E000F212AB /* Vision-Bold.otf in Resources */,
 				6F29FA691F8B790800683E08 /* Assets.xcassets in Resources */,
 			);
@@ -535,13 +533,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6F87A4591FE4559200C9BE2A /* Localizable.strings */ = {
+		6F627AFF1FE5ED100054082A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6F87A4581FE4559200C9BE2A /* en */,
-				6FF47FEB1FE5369C00592779 /* pt-PT */,
-				6FF47FEC1FE536CE00592779 /* pt-BR */,
-				6FE265721FE5671D00DD5F63 /* Base */,
+				6F627B021FE5ED200054082A /* en */,
+				6F627B031FE5ED4E0054082A /* pt-PT */,
+				6F627B041FE5ED550054082A /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -601,7 +598,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -652,7 +649,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -711,7 +708,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ETA.app/ETA";
@@ -729,7 +726,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ETA.app/ETA";
@@ -746,7 +743,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETAUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ETA;
@@ -763,7 +760,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedroremedios.ETAUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ETA;

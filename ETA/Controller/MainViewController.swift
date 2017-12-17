@@ -27,6 +27,14 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .white
     }
 
+    fileprivate func showAlert(withTitle title: String, message: String) {
+        let title = NSLocalizedString(title, comment: "")
+        let message = NSLocalizedString(message, comment: "")
+        UIAlertController(title: title,
+                          message: message,
+                          preferredStyle: .alert).show(self, sender: nil)
+    }
+
     fileprivate func setupFetchRequest() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Bus")
         fetchRequest.propertiesToFetch = ["carreira"]
@@ -36,11 +44,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             let fetchResults = try CoreDataManager.sharedManager.mainContext.fetch(fetchRequest)
             results = fetchResults
         } catch {
-            UIAlertController(title: NSLocalizedString("Error", comment: ""),
-                              message: NSLocalizedString("""
-There was an error fetching the list of bus numbers.Please contact the developer.
-""", comment: ""),
-                              preferredStyle: .alert).show(self, sender: nil)
+            showAlert(withTitle: "Error",
+                      message: "There was an error fetching the list of bus numbers. Please contact the developer.")
         }
     }
 
