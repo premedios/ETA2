@@ -12,14 +12,16 @@ class BusStopCollectionViewCell: UICollectionViewCell {
 
     private let busStopNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.Vision.bold, size: 20)
+        label.font = UIFont(name: UIFont.Vision.bold, size: 18)
         label.textColor = UIColor.AppColors.navyBlue
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
     private let busStopCodeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.Vision.bold, size: 14)
+        label.font = UIFont(name: UIFont.Vision.bold, size: 15)
         label.textColor = UIColor.AppColors.navyBlue
         return label
     }()
@@ -39,18 +41,18 @@ class BusStopCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(busStopCodeLabel)
         busStopCodeLabel.text = viewModel.stopCode
 
-        busStopNameLabel.pinAnchor(top: nil,
-                                   leading: (anchor: contentView.leadingAnchor, constant: 8),
-                                   bottom: nil,
-                                   trailing: nil)
-        busStopNameLabel.centerAnchor(centerX: nil,
-                                      centerY: (anchor: contentView.centerYAnchor, constant: 0))
-
         busStopCodeLabel.pinAnchor(top: nil,
                                    leading: nil,
                                    bottom: nil,
                                    trailing: (anchor: contentView.trailingAnchor, constant: 8))
         busStopCodeLabel.centerAnchor(centerX: nil,
                                       centerY: (anchor: contentView.centerYAnchor, constant: 0))
+        busStopNameLabel.pinAnchor(top: nil,
+                                   leading: (anchor: contentView.leadingAnchor, constant: 8),
+                                   bottom: nil,
+                                   trailing: (anchor: busStopCodeLabel.leadingAnchor, constant: 8))
+        busStopNameLabel.centerAnchor(centerX: nil,
+                                      centerY: (anchor: contentView.centerYAnchor, constant: 0))
+
     }
 }
