@@ -40,9 +40,12 @@ struct MessageResultNotification {
     }
 }
 
-class BusStopsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
-                              NSFetchedResultsControllerDelegate, UISearchResultsUpdating,
-                              MFMessageComposeViewControllerDelegate {
+class BusStopsViewController: UICollectionViewController,
+                              UICollectionViewDelegateFlowLayout,
+                              NSFetchedResultsControllerDelegate,
+                              UISearchResultsUpdating,
+                              MFMessageComposeViewControllerDelegate,
+                              UISearchBarDelegate {
 
     private let busStopCellId = "busStopCell"
     private let sectionHeaderId = "sectionHeaderId"
@@ -50,6 +53,9 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
     var busNumber = ""
 
     private var searchText: String?
+
+    private var searchController: UISearchController!
+    private var searchResultsController: SearchResultsController!
 
     private lazy var fetchedResultsController: NSFetchedResultsController<Bus> = {
         let fetchRequest: NSFetchRequest<Bus> = Bus.fetchRequest()
@@ -77,6 +83,7 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
         navigationItem.title = "\(NSLocalizedString("Bus", comment: "")) \(busNumber)"
         do {
             try fetchedResultsController.performFetch()
+            collectionView?.reloadData()
         } catch {
             showAlert(withTitle: "Error",
                       message: "There was an error retrieving bus stops for this bus. Please contact the developer.")
@@ -88,26 +95,42 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
     }
 
     fileprivate func setupSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
+//        if #available(iOS 11.0, *) {
+//            searchController = UISearchController(searchResultsController: nil)
+//            searchController.searchResultsUpdater = self
+//            navigationItem.searchController = searchController
+//            navigationItem.hidesSearchBarWhenScrolling = false
+//        } else {
+            searchController = UISearchController(searchResultsController: nil)
+            searchController.searchResultsUpdater = self
+            searchController.hidesNavigationBarDuringPresentation = false
+            searchController.obscuresBackgroundDuringPresentation = false
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
+                                                                target: self,
+                                                                action: #selector(handleSearch))
+//        }
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = NSLocalizedString("Search for a bus stop code", comment: "")
         searchController.searchBar.keyboardType = .phonePad
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+
+    @objc private func handleSearch() {
+        navigationController?.present(searchController, animated: true)
     }
 
     fileprivate func setupUI() {
+
+        setupSearchController()
+
         collectionView?.backgroundColor = .white
+
         collectionView?.register(BusStopCollectionViewCell.self, forCellWithReuseIdentifier: busStopCellId)
         collectionView?.register(BusStopsSectionHeaderReusableView.self,
-                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                 withReuseIdentifier: sectionHeaderId)
+                    forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                    withReuseIdentifier: sectionHeaderId)
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionHeadersPinToVisibleBounds = true
         }
-
-        setupSearchController()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -149,7 +172,7 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
     // MARK: - MFMessageComposeViewControllerDelegate
     func messageComposeViewController(_ controller: MFMessageComposeViewController,
                                       didFinishWith result: MessageComposeResult) {
-        dismiss(animated: true, completion: {
+        controller.dismiss(animated: true, completion: {
             let messageResultNotification = MessageResultNotification(result: result)
             NotificationBanner(title: messageResultNotification.message.title,
                                subtitle: messageResultNotification.message.subTitle,
@@ -194,10 +217,10 @@ class BusStopsViewController: UICollectionViewController, UICollectionViewDelega
         return CGSize(width: collectionView.frame.size.width, height: 50)
     }
 
-    // MARK: - UISearchUpdating
+    // MARK: - UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text else { return }
 
+        guard let searchText = searchController.searchBar.text else { return }
         if searchText != "" {
             fetchedResultsController.fetchRequest.predicate =
                 NSPredicate(format: "carreira = %@ and codigo beginswith[cd] %@", busNumber, searchText)

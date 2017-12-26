@@ -22,15 +22,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().barTintColor = UIColor.AppColors.linen
         UINavigationBar.appearance().tintColor = UIColor.AppColors.navyBlue
-        UINavigationBar.appearance().titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor(named: "Navy Blue") as Any]
+
+        if #available(iOS 11.0, *) {
+            UINavigationBar.appearance().titleTextAttributes =
+                [NSAttributedStringKey.foregroundColor: UIColor(named: "Navy Blue") as Any]
+        } else {
+            UINavigationBar.appearance().titleTextAttributes =
+                [NSAttributedStringKey.foregroundColor: UIColor.AppColors.navyBlue]
+        }
 
         window = UIWindow()
         window?.makeKeyAndVisible()
 
         let mainViewController = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let navigationController = UINavigationController()
-        navigationController.navigationBar.isTranslucent = false
+//        navigationController.navigationBar.isTranslucent = false
         navigationController.viewControllers = [mainViewController]
         window?.rootViewController = navigationController
 

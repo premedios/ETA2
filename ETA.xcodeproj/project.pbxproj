@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		6F0BF4C31FDC6DAB007DB170 /* BusStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BF4C21FDC6DAB007DB170 /* BusStopViewModel.swift */; };
 		6F0BF4C51FDC985B007DB170 /* BusStopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BF4C41FDC985B007DB170 /* BusStopCollectionViewCell.swift */; };
+		6F12B7CE1FEE93600083E316 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12B7CD1FEE935F0083E316 /* SearchResultsController.swift */; };
 		6F18214D1FCC15E3009B18AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F18214C1FCC15E3009B18AF /* AppDelegate.swift */; };
-		6F29FA641F8B790800683E08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA631F8B790800683E08 /* ViewController.swift */; };
 		6F29FA691F8B790800683E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F29FA681F8B790800683E08 /* Assets.xcassets */; };
 		6F29FA771F8B790900683E08 /* ETATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA761F8B790900683E08 /* ETATests.swift */; };
 		6F29FA821F8B790900683E08 /* ETAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA811F8B790900683E08 /* ETAUITests.swift */; };
@@ -78,9 +78,9 @@
 /* Begin PBXFileReference section */
 		6F0BF4C21FDC6DAB007DB170 /* BusStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopViewModel.swift; sourceTree = "<group>"; };
 		6F0BF4C41FDC985B007DB170 /* BusStopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopCollectionViewCell.swift; sourceTree = "<group>"; };
+		6F12B7CD1FEE935F0083E316 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		6F18214C1FCC15E3009B18AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F29FA5E1F8B790800683E08 /* ETA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETA.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F29FA631F8B790800683E08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6F29FA681F8B790800683E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F29FA6D1F8B790900683E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F29FA721F8B790900683E08 /* ETATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ETATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,7 +183,6 @@
 				6FAAF85B1F8CD2F50039F007 /* Model */,
 				6F29FA901F8B7AF000683E08 /* Model Controllers */,
 				6F29FA8F1F8B7ADF00683E08 /* Extensions */,
-				6F29FA631F8B790800683E08 /* ViewController.swift */,
 				6F29FA6D1F8B790900683E08 /* Info.plist */,
 			);
 			path = ETA;
@@ -262,6 +261,7 @@
 			children = (
 				6FBBCE961F8D79E100108DAB /* MainViewController.swift */,
 				6FEA6D0C1FDB01A500F212AB /* BusStopsViewController.swift */,
+				6F12B7CD1FEE935F0083E316 /* SearchResultsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,7 +308,6 @@
 				6F29FA5C1F8B790800683E08 /* Resources */,
 				6F7FC1071F8E2FE3000A64DA /* ShellScript */,
 				6FDD5E461FCB670A00DA3B30 /* CopyFiles */,
-				6FE265731FE56DAA00DD5F63 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -462,19 +461,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		6FE265731FE56DAA00DD5F63 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -482,11 +468,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F29FA641F8B790800683E08 /* ViewController.swift in Sources */,
 				6FA435111FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift in Sources */,
 				6F57BB161FD0C23200614F76 /* UIColor+AppColors.swift in Sources */,
 				6FBBCE9D1F8D7A4600108DAB /* BusNumberCollectionViewCell.swift in Sources */,
 				6F3732671FCDF83400978E20 /* ETA.xcdatamodeld in Sources */,
+				6F12B7CE1FEE93600083E316 /* SearchResultsController.swift in Sources */,
 				6FEA6D0B1FDAF9B500F212AB /* UIFont+CustomFonts.swift in Sources */,
 				6FDA0C391FCDB9910000DE56 /* BusNumberViewModel.swift in Sources */,
 				6F60E3621F8F68070065A168 /* Storage.swift in Sources */,
@@ -667,7 +653,7 @@
 					"$(HOME)/Developer/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ETA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PedroRemedios.ETA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -688,7 +674,7 @@
 					"$(HOME)/Developer/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ETA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PedroRemedios.ETA;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -21,9 +21,19 @@ class BusStopCollectionViewCell: UICollectionViewCell {
 
     private let busStopCodeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.Vision.bold, size: 15)
-        label.textColor = UIColor.AppColors.navyBlue
+        label.font = UIFont(name: UIFont.Vision.bold, size: 20)
+        label.textColor = UIColor.AppColors.linen
         return label
+    }()
+
+    private let busStopCodeBackgroundView: UIView = {
+        let view = UIView()
+        if #available(iOS 11.0, *) {
+            view.backgroundColor = UIColor(named: "Navy Blue")
+        } else {
+            view.backgroundColor = UIColor.AppColors.navyBlue
+        }
+        return view
     }()
 
     override init(frame: CGRect) {
@@ -36,21 +46,24 @@ class BusStopCollectionViewCell: UICollectionViewCell {
 
     func setup(withModel viewModel: BusStopViewModel) {
         contentView.backgroundColor = UIColor.AppColors.lightCyan
-        contentView.addSubview(busStopNameLabel)
-        busStopNameLabel.text = viewModel.stopName
-        contentView.addSubview(busStopCodeLabel)
+        contentView.addSubview(busStopCodeBackgroundView)
+        busStopCodeBackgroundView.addSubview(busStopCodeLabel)
         busStopCodeLabel.text = viewModel.stopCode
 
-        busStopCodeLabel.pinAnchor(top: nil,
-                                   leading: nil,
+        contentView.addSubview(busStopNameLabel)
+        busStopNameLabel.text = viewModel.stopName
+
+        busStopCodeBackgroundView.pinAnchor(top: (anchor: contentView.topAnchor, constant: 0),
+                                            leading: (anchor: contentView.leadingAnchor, constant: 0),
+                                            bottom: (anchor: contentView.bottomAnchor, constant: 0),
+                                            trailing: nil)
+        busStopCodeBackgroundView.sizeAnchor(width: 88, height: 0)
+        busStopCodeLabel.centerAnchor(centerX: (anchor: busStopCodeBackgroundView.centerXAnchor, constant: 0),
+                                      centerY: (anchor: busStopCodeBackgroundView.centerYAnchor, constant: 0))
+        busStopNameLabel.pinAnchor(top: nil,
+                                   leading: (anchor: busStopCodeBackgroundView.trailingAnchor, constant: 8),
                                    bottom: nil,
                                    trailing: (anchor: contentView.trailingAnchor, constant: 8))
-        busStopCodeLabel.centerAnchor(centerX: nil,
-                                      centerY: (anchor: contentView.centerYAnchor, constant: 0))
-        busStopNameLabel.pinAnchor(top: nil,
-                                   leading: (anchor: contentView.leadingAnchor, constant: 8),
-                                   bottom: nil,
-                                   trailing: (anchor: busStopCodeLabel.leadingAnchor, constant: 8))
         busStopNameLabel.centerAnchor(centerX: nil,
                                       centerY: (anchor: contentView.centerYAnchor, constant: 0))
 
