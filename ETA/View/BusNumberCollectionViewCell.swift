@@ -11,10 +11,16 @@ import CoreData
 
 class BusNumberCollectionViewCell: UICollectionViewCell {
 
+    var viewModel: BusNumberViewModel! {
+        didSet {
+            busNumberLabel.text = viewModel.carreira
+        }
+    }
+
     let busNumberLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.AppColors.linen
-        label.font = UIFont(name: UIFont.Vision.bold, size: 40)
+        label.font = UIFont(name: UIFont.Vision.bold, size: 30)
         label.textAlignment = .center
         return label
     }()
@@ -30,12 +36,9 @@ class BusNumberCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
 
-    func setupUI(withModel viewModel: BusNumberViewModel) {
         contentView.backgroundColor = UIColor.AppColors.navyBlue
         contentView.addSubview(busNumberLabel)
-        busNumberLabel.text = viewModel.carreira
         setupConstraints()
     }
 

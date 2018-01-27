@@ -152,7 +152,7 @@ class BusStopsViewController: UICollectionViewController,
         guard let busStopCollectionViewCell = cell as? BusStopCollectionViewCell else { return cell }
         let object = fetchedResultsController.object(at: indexPath)
         guard let paragem = object.localizacao, let codigo = object.codigo else { return cell }
-        busStopCollectionViewCell.setup(withModel: BusStopViewModel(stopName: paragem, stopCode: codigo))
+        busStopCollectionViewCell.viewModel = BusStopViewModel(stopName: paragem, stopCode: codigo)
 
         return cell
     }

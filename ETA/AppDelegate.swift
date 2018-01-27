@@ -25,10 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if #available(iOS 11.0, *) {
             UINavigationBar.appearance().titleTextAttributes =
-                [NSAttributedStringKey.foregroundColor: UIColor(named: "Navy Blue") as Any]
+                [NSAttributedStringKey.foregroundColor: UIColor(named: "Navy Blue") as Any,
+                 NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)]
         } else {
             UINavigationBar.appearance().titleTextAttributes =
-                [NSAttributedStringKey.foregroundColor: UIColor.AppColors.navyBlue]
+                [NSAttributedStringKey.foregroundColor: UIColor.AppColors.navyBlue,
+                 NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)]
         }
 
         window = UIWindow()

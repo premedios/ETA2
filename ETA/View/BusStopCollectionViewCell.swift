@@ -10,6 +10,13 @@ import UIKit
 
 class BusStopCollectionViewCell: UICollectionViewCell {
 
+    var viewModel: BusStopViewModel? {
+        didSet {
+            busStopNameLabel.text = viewModel?.stopName
+            busStopCodeLabel.text = viewModel?.stopCode
+        }
+    }
+
     private let busStopNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: UIFont.Vision.bold, size: 18)
@@ -38,20 +45,12 @@ class BusStopCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func setup(withModel viewModel: BusStopViewModel) {
         contentView.backgroundColor = UIColor.AppColors.lightCyan
         contentView.addSubview(busStopCodeBackgroundView)
         busStopCodeBackgroundView.addSubview(busStopCodeLabel)
-        busStopCodeLabel.text = viewModel.stopCode
 
         contentView.addSubview(busStopNameLabel)
-        busStopNameLabel.text = viewModel.stopName
 
         busStopCodeBackgroundView.pinAnchor(top: (anchor: contentView.topAnchor, constant: 0),
                                             leading: (anchor: contentView.leadingAnchor, constant: 0),
@@ -66,6 +65,9 @@ class BusStopCollectionViewCell: UICollectionViewCell {
                                    trailing: (anchor: contentView.trailingAnchor, constant: 8))
         busStopNameLabel.centerAnchor(centerX: nil,
                                       centerY: (anchor: contentView.centerYAnchor, constant: 0))
+    }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

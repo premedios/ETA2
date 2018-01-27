@@ -10,11 +10,14 @@ import UIKit
 import CoreData
 import WebKit
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainViewController: UICollectionViewController {
 
     let cellId = "Bus Number Cell"
 
     var results = [Any]()
+
+    let mainCollectionViewDataSource = MainCollectionViewDataSource()
+    let mainCollectionViewDelegate = MainCollectionViewDelegate()
 
     fileprivate func setupUI() {
         navigationItem.title = NSLocalizedString("Buses", comment: "")
@@ -45,6 +48,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         do {
             let fetchResults = try CoreDataManager.sharedManager.mainContext.fetch(fetchRequest)
             results = fetchResults
+            mainCollectionViewDataSource.results = results
+            mainCollectionViewDelegate.results = results
         } catch {
             showAlert(withTitle: "Error",
                       message: "There was an error fetching the list of bus numbers. Please contact the developer.")
@@ -53,6 +58,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        mainCollectionViewDataSource.cellId = cellId
+        collectionView?.dataSource = mainCollectionViewDataSource
+
+        mainCollectionViewDelegate.navigationController = navigationController
+        collectionView?.delegate = mainCollectionViewDelegate
 
         setupUI()
 
@@ -66,46 +77,6 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 //        }
 //        dataTask.resume()
 
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return results.count
-    }
-
-    override func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        guard let busNumberCollectionViewCell = cell as? BusNumberCollectionViewCell,
-              let busObject = results[indexPath.row] as? [String: String],
-              let busNumber = busObject["carreira"]  else { return cell }
-        busNumberCollectionViewCell.setupUI(withModel: BusNumberViewModel(carreira: busNumber))
-        return busNumberCollectionViewCell
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let busObject = results[indexPath.row] as? [String: String],
-              let busNumber = busObject["carreira"] else { return }
-        let busStopsViewController = BusStopsViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        busStopsViewController.busNumber = busNumber
-        navigationController?.pushViewController(busStopsViewController, animated: true)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.bounds.size.width - 9) / 3, height: 100)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
     }
 
 }
