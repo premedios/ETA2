@@ -21,6 +21,7 @@
 		6F57BB161FD0C23200614F76 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57BB151FD0C23200614F76 /* UIColor+AppColors.swift */; };
 		6F60E3621F8F68070065A168 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F60E3611F8F68060065A168 /* Storage.swift */; };
 		6F627B011FE5ED110054082A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F627AFF1FE5ED100054082A /* Localizable.strings */; };
+		6F89E09C201D32DA00913D9C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6F89E09B201D32D900913D9C /* .travis.yml */; };
 		6FA435111FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA435101FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift */; };
 		6FAAF8601F8CD4D90039F007 /* stops.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAF85F1F8CD4D90039F007 /* stops.csv */; };
 		6FBBCE981F8D79E100108DAB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBCE961F8D79E100108DAB /* MainViewController.swift */; };
@@ -100,6 +101,7 @@
 		6F627B021FE5ED200054082A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6F627B031FE5ED4E0054082A /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6F627B041FE5ED550054082A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6F89E09B201D32D900913D9C /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		6FA435101FDD9332006C4CCE /* BusStopsSectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsSectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		6FAAF85F1F8CD4D90039F007 /* stops.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.csv; sourceTree = "<group>"; };
 		6FBBCE961F8D79E100108DAB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		6F29FA551F8B790800683E08 = {
 			isa = PBXGroup;
 			children = (
+				6F89E09B201D32D900913D9C /* .travis.yml */,
 				6FDD5E421FCB627900DA3B30 /* ETA.sqlite */,
 				6F29FA601F8B790800683E08 /* ETA */,
 				6F29FA751F8B790900683E08 /* ETATests */,
@@ -423,6 +426,7 @@
 				6FEA6D051FDAF3E000F212AB /* Vision-LightItalic.otf in Resources */,
 				6FEA6D061FDAF3E000F212AB /* Vision-Regular italic.otf in Resources */,
 				6FEA6CFF1FDAF3E000F212AB /* Vision-Thin.otf in Resources */,
+				6F89E09C201D32DA00913D9C /* .travis.yml in Resources */,
 				6FEA6D001FDAF3E000F212AB /* Vision-Black italic.otf in Resources */,
 				6FEA6CFE1FDAF3E000F212AB /* Vision-Thin italic.otf in Resources */,
 				6FDD5E4A1FCB67DB00DA3B30 /* ETA.sqlite in Resources */,
