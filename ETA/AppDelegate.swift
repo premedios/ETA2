@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FontAwesome_swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,32 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        //print(UIFont.familyNames);
 
         CoreDataManager.sharedManager.loadPreloadedDatabase(withName: "ETA")
         CoreDataManager.sharedManager.setModel(toName: "ETA")
 
-        UINavigationBar.appearance().barTintColor = UIColor.AppColors.linen
-        UINavigationBar.appearance().tintColor = UIColor.AppColors.navyBlue
+        UINavigationBar.appearance().barTintColor = UIColor(named: "Linen")
+        UINavigationBar.appearance().tintColor = UIColor(named: "Navy Blue")
 
-        if #available(iOS 11.0, *) {
-            UINavigationBar.appearance().titleTextAttributes =
-                [NSAttributedStringKey.foregroundColor: UIColor(named: "Navy Blue") as Any,
-                 NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)]
-        } else {
-            UINavigationBar.appearance().titleTextAttributes =
-                [NSAttributedStringKey.foregroundColor: UIColor.AppColors.navyBlue,
-                 NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)]
-        }
-
+        UINavigationBar.appearance().titleTextAttributes =
+                [NSAttributedString.Key.foregroundColor: UIColor(named: "Navy Blue") as Any,
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)]
+        
         window = UIWindow()
         window?.makeKeyAndVisible()
 
-        let mainViewController = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        let navigationController = UINavigationController()
-//        navigationController.navigationBar.isTranslucent = false
-        navigationController.viewControllers = [mainViewController]
-        window?.rootViewController = navigationController
+        window?.rootViewController = ETATabBarController()
 
         return true
     }

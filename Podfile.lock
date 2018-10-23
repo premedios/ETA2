@@ -1,0 +1,28 @@
+PODS:
+  - FontAwesome.swift (1.4.4)
+  - MarqueeLabel/Swift (3.2.0)
+  - NotificationBannerSwift (1.7.1):
+    - MarqueeLabel/Swift (~> 3.2.0)
+    - SnapKit (~> 4.0.1)
+  - SnapKit (4.0.1)
+
+DEPENDENCIES:
+  - FontAwesome.swift
+  - NotificationBannerSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FontAwesome.swift
+    - MarqueeLabel
+    - NotificationBannerSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  FontAwesome.swift: 17b93524b9f61136a8566344517b8556ed584e87
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
+  NotificationBannerSwift: 5d0191ae57c4b38e484dab4912e32d1ed99fce61
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+
+PODFILE CHECKSUM: 5de3662b4be7f7403cfce60134cafe92b52a4e76
+
+COCOAPODS: 1.5.2

@@ -9,43 +9,15 @@
 import UIKit
 import CoreData
 import MessageUI
-import NotificationBanner
-
-struct MessageResultNotification {
-    private var result: MessageComposeResult
-
-    var leftView: UIImageView!
-    var message: (title: String, subTitle: String)!
-    var style: BannerStyle
-
-    init(result: MessageComposeResult) {
-        self.result = result
-        switch result {
-        case MessageComposeResult.sent:
-            self.leftView = UIImageView(image: #imageLiteral(resourceName: "success"))
-            self.message = (NSLocalizedString("Message sent!", comment: ""),
-                            NSLocalizedString("You will be receiving an answer shortly", comment: ""))
-            self.style = .success
-        case MessageComposeResult.cancelled:
-            self.leftView = UIImageView(image: #imageLiteral(resourceName: "warning"))
-            self.message = (NSLocalizedString("Message not sent!", comment: ""),
-                            NSLocalizedString("You have cancelled sending", comment: ""))
-            self.style = .warning
-        case MessageComposeResult.failed:
-            self.leftView = UIImageView(image: #imageLiteral(resourceName: "error"))
-            self.message = (NSLocalizedString("Message not sent!", comment: ""),
-                            NSLocalizedString("Please contact your mobile carrier", comment: ""))
-            self.style = .danger
-        }
-    }
-}
+import NotificationBannerSwift
 
 class BusStopsViewController: UICollectionViewController,
                               UICollectionViewDelegateFlowLayout,
                               NSFetchedResultsControllerDelegate,
                               UISearchResultsUpdating,
                               MFMessageComposeViewControllerDelegate,
-                              UISearchBarDelegate {
+                              UISearchBarDelegate,
+                              BusStopCollectionViewCellDelegate {
 
     private let busStopCellId = "busStopCell"
     private let sectionHeaderId = "sectionHeaderId"
@@ -55,13 +27,15 @@ class BusStopsViewController: UICollectionViewController,
     private var searchText: String?
 
     private var searchController: UISearchController!
-    private var searchResultsController: SearchResultsController!
+    
+    private var rightBarButtonItems = [UIBarButtonItem]();
 
     private lazy var fetchedResultsController: NSFetchedResultsController<Bus> = {
         let fetchRequest: NSFetchRequest<Bus> = Bus.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "destino", ascending: false),
         NSSortDescriptor(key: "codigo", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "carreira = %@", busNumber)
+        //fetchRequest.propertiesToFetch = ["codigo", "favourite", "destino"]
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
           managedObjectContext: CoreDataManager.sharedManager.mainContext,
           sectionNameKeyPath: "destino", cacheName: nil)
@@ -81,9 +55,10 @@ class BusStopsViewController: UICollectionViewController,
         super.viewDidLoad()
 
         navigationItem.title = "\(NSLocalizedString("Bus", comment: "")) \(busNumber)"
+        navigationItem.largeTitleDisplayMode = .never
         do {
             try fetchedResultsController.performFetch()
-            collectionView?.reloadData()
+            //collectionView?.reloadData()
         } catch {
             showAlert(withTitle: "Error",
                       message: "There was an error retrieving bus stops for this bus. Please contact the developer.")
@@ -91,27 +66,16 @@ class BusStopsViewController: UICollectionViewController,
 
         setupUI()
 
-        definesPresentationContext = true
     }
 
     fileprivate func setupSearchController() {
-//        if #available(iOS 11.0, *) {
-//            searchController = UISearchController(searchResultsController: nil)
-//            searchController.searchResultsUpdater = self
-//            navigationItem.searchController = searchController
-//            navigationItem.hidesSearchBarWhenScrolling = false
-//        } else {
-            searchController = UISearchController(searchResultsController: nil)
-            searchController.searchResultsUpdater = self
-            searchController.hidesNavigationBarDuringPresentation = false
-            searchController.obscuresBackgroundDuringPresentation = false
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
-                                                                target: self,
-                                                                action: #selector(handleSearch))
-//        }
-        searchController.dimsBackgroundDuringPresentation = false
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = NSLocalizedString("Search for a bus stop code", comment: "")
         searchController.searchBar.keyboardType = .phonePad
+        searchController.dimsBackgroundDuringPresentation = false
     }
 
     @objc private func handleSearch() {
@@ -125,12 +89,14 @@ class BusStopsViewController: UICollectionViewController,
         collectionView?.backgroundColor = .white
 
         collectionView?.register(BusStopCollectionViewCell.self, forCellWithReuseIdentifier: busStopCellId)
-        collectionView?.register(BusStopsSectionHeaderReusableView.self,
-                    forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+        collectionView?.register(ETASectionHeaderReusableView.self,
+                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                     withReuseIdentifier: sectionHeaderId)
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionHeadersPinToVisibleBounds = true
         }
+
+        navigationItem.rightBarButtonItems = rightBarButtonItems
     }
 
     // MARK: - UICollectionViewDataSource
@@ -144,19 +110,21 @@ class BusStopsViewController: UICollectionViewController,
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
-
-    // MARK: - UICollectionViewDelegate
+    
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: busStopCellId, for: indexPath)
         guard let busStopCollectionViewCell = cell as? BusStopCollectionViewCell else { return cell }
         let object = fetchedResultsController.object(at: indexPath)
         guard let paragem = object.localizacao, let codigo = object.codigo else { return cell }
-        busStopCollectionViewCell.viewModel = BusStopViewModel(stopName: paragem, stopCode: codigo)
-
+        busStopCollectionViewCell.object = object
+        busStopCollectionViewCell.indexPath = indexPath
+        busStopCollectionViewCell.viewModel = BusStopViewModel(stopName: paragem, stopCode: codigo, favourite: object.favourite)
+        busStopCollectionViewCell.delegate = self
         return cell
     }
 
+    // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if MFMessageComposeViewController.canSendText() {
             let object = fetchedResultsController.object(at: indexPath)
@@ -168,6 +136,10 @@ class BusStopsViewController: UICollectionViewController,
             present(messageComposeViewController, animated: true, completion: nil)
         }
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        return false;
+    }
 
     // MARK: - MFMessageComposeViewControllerDelegate
     func messageComposeViewController(_ controller: MFMessageComposeViewController,
@@ -176,7 +148,7 @@ class BusStopsViewController: UICollectionViewController,
             let messageResultNotification = MessageResultNotification(result: result)
             NotificationBanner(title: messageResultNotification.message.title,
                                subtitle: messageResultNotification.message.subTitle,
-                               leftView: messageResultNotification.leftView, rightView: nil,
+                               leftView: messageResultNotification.leftView,
                                style: messageResultNotification.style).show()
         })
     }
@@ -203,9 +175,9 @@ class BusStopsViewController: UICollectionViewController,
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
         withReuseIdentifier: sectionHeaderId, for: indexPath)
-        guard let busStopSectionHeaderReusableView = view as? BusStopsSectionHeaderReusableView else { return view }
+        guard let busStopSectionHeaderReusableView = view as? ETASectionHeaderReusableView else { return view }
         let sectionInfo = fetchedResultsController.sections?[indexPath.section]
         busStopSectionHeaderReusableView.setup(withTitle: sectionInfo?.name ?? "")
         return view
@@ -223,7 +195,7 @@ class BusStopsViewController: UICollectionViewController,
         guard let searchText = searchController.searchBar.text else { return }
         if searchText != "" {
             fetchedResultsController.fetchRequest.predicate =
-                NSPredicate(format: "carreira = %@ and codigo beginswith[cd] %@", busNumber, searchText)
+                NSPredicate(format: "carreira = %@ and codigo contains[cd] %@", busNumber, searchText)
         } else {
             fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "carreira = %@", busNumber)
         }
@@ -236,7 +208,17 @@ class BusStopsViewController: UICollectionViewController,
                 "An error ocurred performing a search. Please contact the developer.", comment: "")
             UIAlertController(title: title,
                               message: message,
-                              preferredStyle: UIAlertControllerStyle.alert).show(self, sender: nil)
+                              preferredStyle: UIAlertController.Style.alert).show(self, sender: nil)
         }
+    }
+    
+    // MARK: - BusStopCollectionViewCellDelegate
+    func collectionView(_ collectionView: UICollectionView, didChangeFavouriteStateForCellAt indexPath: IndexPath) {
+        let object: Bus = fetchedResultsController.object(at: indexPath)
+        let cell = collectionView.cellForItem(at: indexPath) as! BusStopCollectionViewCell
+        if let favourite = cell.viewModel?.favourite {
+            object.favourite = favourite
+        }
+        try! fetchedResultsController.managedObjectContext.save()
     }
 }
