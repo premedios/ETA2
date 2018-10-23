@@ -9,6 +9,7 @@
 import Foundation
 
 struct BusStopViewModel {
-    var stopName: String
-    var stopCode: String
+    var stopName: String!
+    var stopCode: String!
+    var favourite: Bool!
 }

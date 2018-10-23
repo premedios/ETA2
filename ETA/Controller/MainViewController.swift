@@ -21,11 +21,10 @@ class MainViewController: UICollectionViewController {
 
     fileprivate func setupUI() {
         navigationItem.title = NSLocalizedString("Buses", comment: "")
-//        if #available(iOS 11.0, *) {
-//            navigationController?.navigationBar.prefersLargeTitles = true
-//            navigationController?.navigationBar.largeTitleTextAttributes =
-//                [NSAttributedStringKey.foregroundColor: UIColor(named: "Navy Blue") as Any]
-//        }
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor(named: "Navy Blue") as Any]
 
         collectionView?.register(BusNumberCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.alwaysBounceVertical = true
@@ -64,7 +63,7 @@ class MainViewController: UICollectionViewController {
 
         mainCollectionViewDelegate.navigationController = navigationController
         collectionView?.delegate = mainCollectionViewDelegate
-
+        
         setupUI()
 
         setupFetchRequest()
