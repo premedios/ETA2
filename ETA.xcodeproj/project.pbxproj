@@ -23,6 +23,21 @@
 		6F46B7EF1FD747A900822D7F /* UIView+Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F46B7EE1FD747A900822D7F /* UIView+Utilites.swift */; };
 		6F57BB141FD0B0A600614F76 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57BB131FD0B0A600614F76 /* UIColor+Utilities.swift */; };
 		6F57BB161FD0C23200614F76 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57BB151FD0C23200614F76 /* UIColor+AppColors.swift */; };
+		6F5AAF1621E7E3D6000EA389 /* ETA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6F5AAF1521E7E3D4000EA389 /* ETA.sqlite */; };
+		6F5AAF1721E7E3D6000EA389 /* ETA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6F5AAF1521E7E3D4000EA389 /* ETA.sqlite */; };
+		6F5AAF1821E7E447000EA389 /* Vision-Black italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF41FDAF3D900F212AB /* Vision-Black italic.otf */; };
+		6F5AAF1921E7E447000EA389 /* Vision-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CFD1FDAF3DF00F212AB /* Vision-Black.otf */; };
+		6F5AAF1A21E7E447000EA389 /* Vision-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CFB1FDAF3DE00F212AB /* Vision-Bold.otf */; };
+		6F5AAF1B21E7E447000EA389 /* Vision-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CFC1FDAF3DF00F212AB /* Vision-BoldItalic.otf */; };
+		6F5AAF1C21E7E447000EA389 /* Vision-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF81FDAF3DC00F212AB /* Vision-Heavy.otf */; };
+		6F5AAF1D21E7E447000EA389 /* Vision-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF51FDAF3DA00F212AB /* Vision-HeavyItalic.otf */; };
+		6F5AAF1E21E7E447000EA389 /* Vision-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF71FDAF3DB00F212AB /* Vision-Light.otf */; };
+		6F5AAF1F21E7E447000EA389 /* Vision-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF91FDAF3DD00F212AB /* Vision-LightItalic.otf */; };
+		6F5AAF2021E7E447000EA389 /* Vision-Regular italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CFA1FDAF3DD00F212AB /* Vision-Regular italic.otf */; };
+		6F5AAF2121E7E447000EA389 /* Vision-Thin italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF21FDAF3D700F212AB /* Vision-Thin italic.otf */; };
+		6F5AAF2221E7E447000EA389 /* Vision-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF31FDAF3D800F212AB /* Vision-Thin.otf */; };
+		6F5AAF2321E7E447000EA389 /* Vision.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF61FDAF3DA00F212AB /* Vision.otf */; };
+		6F5AAF2421E7E46B000EA389 /* stops.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAF85F1F8CD4D90039F007 /* stops.csv */; };
 		6F60E3621F8F68070065A168 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F60E3611F8F68060065A168 /* Storage.swift */; };
 		6F627B011FE5ED110054082A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F627AFF1FE5ED100054082A /* Localizable.strings */; };
 		6F89E09C201D32DA00913D9C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6F89E09B201D32D900913D9C /* .travis.yml */; };
@@ -44,7 +59,6 @@
 		6FD57A2E20DC3F2C0054BE41 /* ETASectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD57A2D20DC3F2C0054BE41 /* ETASectionHeaderReusableView.swift */; };
 		6FDA0C391FCDB9910000DE56 /* BusNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA0C381FCDB9900000DE56 /* BusNumberViewModel.swift */; };
 		6FDD5E331FCAEC4C00DA3B30 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDD5E321FCAEC4C00DA3B30 /* CoreDataManager.swift */; };
-		6FDD5E4A1FCB67DB00DA3B30 /* ETA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6FDD5E421FCB627900DA3B30 /* ETA.sqlite */; };
 		6FEA6CFE1FDAF3E000F212AB /* Vision-Thin italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF21FDAF3D700F212AB /* Vision-Thin italic.otf */; };
 		6FEA6CFF1FDAF3E000F212AB /* Vision-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF31FDAF3D800F212AB /* Vision-Thin.otf */; };
 		6FEA6D001FDAF3E000F212AB /* Vision-Black italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA6CF41FDAF3D900F212AB /* Vision-Black italic.otf */; };
@@ -122,6 +136,7 @@
 		6F4E251F205013590094BA0F /* Localize_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Localize_Swift.framework; path = ETA/Carthage/Build/iOS/Localize_Swift.framework; sourceTree = "<group>"; };
 		6F57BB131FD0B0A600614F76 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		6F57BB151FD0C23200614F76 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
+		6F5AAF1521E7E3D4000EA389 /* ETA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ETA.sqlite; sourceTree = "<group>"; };
 		6F60E3611F8F68060065A168 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		6F627B021FE5ED200054082A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6F627B031FE5ED4E0054082A /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -147,7 +162,6 @@
 		6FD57A2D20DC3F2C0054BE41 /* ETASectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETASectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		6FDA0C381FCDB9900000DE56 /* BusNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusNumberViewModel.swift; sourceTree = "<group>"; };
 		6FDD5E321FCAEC4C00DA3B30 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		6FDD5E421FCB627900DA3B30 /* ETA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = ETA.sqlite; path = "../../Library/Application Support/ETACoreDataImport/ETA.sqlite"; sourceTree = "<group>"; };
 		6FE265781FE57BC800DD5F63 /* MarqueeLabelSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabelSwift.framework; path = ETA/Carthage/Build/iOS/MarqueeLabelSwift.framework; sourceTree = "<group>"; };
 		6FE2657A1FE57BD400DD5F63 /* NotificationBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationBanner.framework; path = ETA/Carthage/Build/iOS/NotificationBanner.framework; sourceTree = "<group>"; };
 		6FE2657C1FE57BDC00DD5F63 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ETA/Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
@@ -217,9 +231,9 @@
 		6F29FA551F8B790800683E08 = {
 			isa = PBXGroup;
 			children = (
+				6F5AAF1521E7E3D4000EA389 /* ETA.sqlite */,
 				6F89E09D201D34A100913D9C /* README.md */,
 				6F89E09B201D32D900913D9C /* .travis.yml */,
-				6FDD5E421FCB627900DA3B30 /* ETA.sqlite */,
 				6F29FA601F8B790800683E08 /* ETA */,
 				6F29FA751F8B790900683E08 /* ETATests */,
 				6F29FA801F8B790900683E08 /* ETAUITests */,
@@ -563,10 +577,10 @@
 				6FEA6D061FDAF3E000F212AB /* Vision-Regular italic.otf in Resources */,
 				6FEA6CFF1FDAF3E000F212AB /* Vision-Thin.otf in Resources */,
 				6F89E09C201D32DA00913D9C /* .travis.yml in Resources */,
+				6F5AAF1621E7E3D6000EA389 /* ETA.sqlite in Resources */,
 				6FEA6D001FDAF3E000F212AB /* Vision-Black italic.otf in Resources */,
 				6FEA6CFE1FDAF3E000F212AB /* Vision-Thin italic.otf in Resources */,
 				6F89E09E201D34A100913D9C /* README.md in Resources */,
-				6FDD5E4A1FCB67DB00DA3B30 /* ETA.sqlite in Resources */,
 				6FEA6D041FDAF3E000F212AB /* Vision-Heavy.otf in Resources */,
 				6FEA6D081FDAF3E000F212AB /* Vision-BoldItalic.otf in Resources */,
 				6FEA6D091FDAF3E000F212AB /* Vision-Black.otf in Resources */,
@@ -584,6 +598,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F5AAF1A21E7E447000EA389 /* Vision-Bold.otf in Resources */,
+				6F5AAF1821E7E447000EA389 /* Vision-Black italic.otf in Resources */,
+				6F5AAF1B21E7E447000EA389 /* Vision-BoldItalic.otf in Resources */,
+				6F5AAF1D21E7E447000EA389 /* Vision-HeavyItalic.otf in Resources */,
+				6F5AAF2421E7E46B000EA389 /* stops.csv in Resources */,
+				6F5AAF1E21E7E447000EA389 /* Vision-Light.otf in Resources */,
+				6F5AAF1721E7E3D6000EA389 /* ETA.sqlite in Resources */,
+				6F5AAF2221E7E447000EA389 /* Vision-Thin.otf in Resources */,
+				6F5AAF1F21E7E447000EA389 /* Vision-LightItalic.otf in Resources */,
+				6F5AAF2021E7E447000EA389 /* Vision-Regular italic.otf in Resources */,
+				6F5AAF1921E7E447000EA389 /* Vision-Black.otf in Resources */,
+				6F5AAF2121E7E447000EA389 /* Vision-Thin italic.otf in Resources */,
+				6F5AAF1C21E7E447000EA389 /* Vision-Heavy.otf in Resources */,
+				6F5AAF2321E7E447000EA389 /* Vision.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
