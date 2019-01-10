@@ -1,2 +1,5 @@
 language: swift
-
+xcode_workspace: ETA.xcworkspace
+xcode_scheme: ETATests
+osx_image: xcode10.1
+xcode_destination: platform=iOS Simulator, OS=macOSm name=iPhone 7 Plus

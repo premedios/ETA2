@@ -9,6 +9,20 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DECF0C1477905A2CA15AF738ECC02B36"
+               BuildableName = "Pods_ETATests.framework"
+               BlueprintName = "Pods-ETATests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
@@ -83,10 +97,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6F29FA5D1F8B790800683E08"
-            BuildableName = "ETA.app"
-            BlueprintName = "ETA"
-            ReferencedContainer = "container:ETA.xcodeproj">
+            BlueprintIdentifier = "DECF0C1477905A2CA15AF738ECC02B36"
+            BuildableName = "Pods_ETATests.framework"
+            BlueprintName = "Pods-ETATests"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
