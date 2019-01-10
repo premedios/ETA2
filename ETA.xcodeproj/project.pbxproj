@@ -887,7 +887,7 @@
 				DEVELOPMENT_TEAM = N2NF9KW4Q2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ETA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PedroRemedios.ETA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -906,7 +906,7 @@
 				DEVELOPMENT_TEAM = N2NF9KW4Q2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ETA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PedroRemedios.ETA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
