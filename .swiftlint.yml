@@ -1,0 +1,6 @@
+disabled_rules:
+    - weak_delegate
+    - line_length
+excluded:
+    - Carthage
+    - Pods

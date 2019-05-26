@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct BusStopViewModel {
+struct BusStopCellViewModel {
     var stopName: String!
     var stopCode: String!
-    var favourite: Bool!
 }

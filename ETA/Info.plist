@@ -41,9 +41,9 @@
 		<string>Vision-Bold.otf</string>
 		<string>Vision-Black.otf</string>
 		<string>Vision-Black italic.otf</string>
-		<string>Font Awesome 5 Brands-Regular-400.otf</string>
-		<string>Font Awesome 5 Free-Regular-400 new.otf</string>
-		<string>Font Awesome 5 Free-Solid-900.otf</string>
+		<string>fa-brands-400.ttf</string>
+		<string>fa-regular-400.ttf</string>
+		<string>fa-solid.900.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

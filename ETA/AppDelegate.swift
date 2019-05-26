@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import FontAwesome_swift
+import FontAwesome
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //print(UIFont.familyNames);
 
-        CoreDataManager.sharedManager.loadPreloadedDatabase(withName: "ETA")
-        CoreDataManager.sharedManager.setModel(toName: "ETA")
+        DatabaseController.loadPreloadedDatabase(with: "ETA")
 
         UINavigationBar.appearance().barTintColor = UIColor(named: "Linen")
         UINavigationBar.appearance().tintColor = UIColor(named: "Navy Blue")
@@ -29,11 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes =
                 [NSAttributedString.Key.foregroundColor: UIColor(named: "Navy Blue") as Any,
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)]
-        
-        window = UIWindow()
+
+        let navigationController = UINavigationController()
+        let mainCoordinator = MainCoordinator(with: navigationController)
+        mainCoordinator.start()
+
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
 
-        window?.rootViewController = ETATabBarController()
+        window?.rootViewController = navigationController
 
         return true
     }

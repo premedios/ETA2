@@ -8,16 +8,16 @@
 
 import Foundation
 import UIKit
-import NotificationBannerSwift
+import NotificationBanner
 import MessageUI
 
 struct MessageResultNotification {
     private var result: MessageComposeResult
-    
+
     var leftView: UIImageView!
     var message: (title: String, subTitle: String)!
     var style: BannerStyle
-    
+
     init(result: MessageComposeResult) {
         self.result = result
         switch result {

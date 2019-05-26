@@ -11,7 +11,6 @@ import CoreData
 
 final class DatabaseController {
 
-    // MARK: - Properties
     private var modelName = ""
 
     private lazy var storeContainer: NSPersistentContainer = {
@@ -54,14 +53,16 @@ final class DatabaseController {
                                         isDirectory: false)
     }()!
 
-    // MARK: - Initializer
+    init(with modelName: String) {
+        self.modelName = modelName
+    }
 
-    // Private initializer for singleton
-    private init() {}
+    convenience init(with container: NSPersistentContainer) {
+        self.init(with: "ETA")
+        storeContainer = container
+    }
 
-    // MARK: - Methods
-
-    func loadPreloadedDatabase(withName name: String) {
+    class func loadPreloadedDatabase(with name: String) {
 
         var sqliteSourcePath: String?
         var sqliteSourcePathShm: String?
