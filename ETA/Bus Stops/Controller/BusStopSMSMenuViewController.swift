@@ -11,14 +11,12 @@ import UIKit
 class BusStopSMSMenuViewController: UIViewController {
     @IBOutlet var smsMenuTableView: UITableView?
     @IBOutlet var viewTopAnchor: NSLayoutConstraint?
-    
+
     var coordinator: BusStopsCoordinator?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
 }
