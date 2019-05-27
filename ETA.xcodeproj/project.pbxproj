@@ -50,12 +50,11 @@
 		6F8BEAAE21EF2AEF00996044 /* MarqueeLabelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8BEAA921EF2AEF00996044 /* MarqueeLabelSwift.framework */; };
 		6F8BEAAF21EF2AEF00996044 /* MarqueeLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8BEAAA21EF2AEF00996044 /* MarqueeLabel.framework */; };
 		6F8E3B1320AF7183006418E0 /* ETA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E3B1120AF7183006418E0 /* ETA.xcdatamodeld */; };
+		6F90FBE6229B629800593896 /* BusNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBCE961F8D79E100108DAB /* BusNumbersViewController.swift */; };
 		6F920C91220C598F003C6E16 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F920C8E220C598D003C6E16 /* fa-brands-400.ttf */; };
 		6F920C92220C598F003C6E16 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F920C8F220C598E003C6E16 /* fa-regular-400.ttf */; };
 		6F920C93220C598F003C6E16 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F920C90220C598F003C6E16 /* fa-solid-900.ttf */; };
-		6F920C9E220CF489003C6E16 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F920C9D220CF489003C6E16 /* CoordinatorDelegate.swift */; };
 		6FAAF8601F8CD4D90039F007 /* stops.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAF85F1F8CD4D90039F007 /* stops.csv */; };
-		6FBBCE981F8D79E100108DAB /* BusNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBCE961F8D79E100108DAB /* BusNumbersViewController.swift */; };
 		6FBBCE9D1F8D7A4600108DAB /* BusNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBCE9C1F8D7A4600108DAB /* BusNumberCell.swift */; };
 		6FC7167A229AF0D900723604 /* BusStopSMSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC71679229AF0D900723604 /* BusStopSMSMenuViewController.swift */; };
 		6FC7167B229AF0D900723604 /* BusStopSMSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC71679229AF0D900723604 /* BusStopSMSMenuViewController.swift */; };
@@ -64,6 +63,7 @@
 		6FC71681229B2ABA00723604 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC71680229B2ABA00723604 /* MainCoordinator.swift */; };
 		6FC71682229B2ABA00723604 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC71680229B2ABA00723604 /* MainCoordinator.swift */; };
 		6FC71683229B442D00723604 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F920C9D220CF489003C6E16 /* CoordinatorDelegate.swift */; };
+		6FC71684229B5BED00723604 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F920C9D220CF489003C6E16 /* CoordinatorDelegate.swift */; };
 		6FCE48012213853A0034CC37 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6FCE48002213853A0034CC37 /* .swiftlint.yml */; };
 		6FCEF76B20DFB5C6003125DE /* MessageResultNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEF76A20DFB5C6003125DE /* MessageResultNotification.swift */; };
 		6FD57A2E20DC3F2C0054BE41 /* BusStopSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD57A2D20DC3F2C0054BE41 /* BusStopSectionHeader.swift */; };
@@ -668,10 +668,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FC71684229B5BED00723604 /* CoordinatorDelegate.swift in Sources */,
 				6F36FEDA2235CB3900DF639A /* InterfaceCell.swift in Sources */,
 				6F57BB161FD0C23200614F76 /* UIColor+AppColors.swift in Sources */,
 				6FC7167D229AF30B00723604 /* BusStopsCoordinator.swift in Sources */,
-				6F920C9E220CF489003C6E16 /* CoordinatorDelegate.swift in Sources */,
 				6FBBCE9D1F8D7A4600108DAB /* BusNumberCell.swift in Sources */,
 				6FEE25DF22106E0200B58BD6 /* BusStopsDatasource.swift in Sources */,
 				6FEA6D0B1FDAF9B500F212AB /* UIFont+CustomFonts.swift in Sources */,
@@ -682,6 +682,7 @@
 				6F46B7EF1FD747A900822D7F /* UIView+Utilites.swift in Sources */,
 				6FCEF76B20DFB5C6003125DE /* MessageResultNotification.swift in Sources */,
 				6FC71681229B2ABA00723604 /* MainCoordinator.swift in Sources */,
+				6F90FBE6229B629800593896 /* BusNumbersViewController.swift in Sources */,
 				6F367B112207501600C4FC91 /* ModelController.swift in Sources */,
 				6FC7167A229AF0D900723604 /* BusStopSMSMenuViewController.swift in Sources */,
 				6F0BF4C51FDC985B007DB170 /* BusStopCell.swift in Sources */,
@@ -690,7 +691,6 @@
 				6F367B132207521200C4FC91 /* Model.swift in Sources */,
 				6F0BF4C31FDC6DAB007DB170 /* BusStopCellViewModel.swift in Sources */,
 				6FDD5E331FCAEC4C00DA3B30 /* DatabaseController.swift in Sources */,
-				6FBBCE981F8D79E100108DAB /* BusNumbersViewController.swift in Sources */,
 				4407B52FC5C4189F26CBC6E2 /* BusNumbersDataSource.swift in Sources */,
 				6F8E3B1320AF7183006418E0 /* ETA.xcdatamodeld in Sources */,
 				6F88C769223333FB0084F983 /* InterfacesDatasource.swift in Sources */,

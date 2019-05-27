@@ -1,5 +1,5 @@
 //
-//  Coordinator.swift
+//  CoordinatorDelegate.swift
 //  ETA
 //
 //  Created by Pedro Remedios on 07/02/2019.
@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
-    var childCoordinators: [Coordinator] { get set }
+protocol CoordinatorDelegate {
+    var childCoordinators: [CoordinatorDelegate] { get set }
     var navigationController: UINavigationController { get set }
 
     func start()

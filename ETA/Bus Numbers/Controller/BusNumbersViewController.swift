@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  BusNumbersViewController.swift
 //  ETA
 //
 //  Created by Pedro Remedios on 28/04/2017.
