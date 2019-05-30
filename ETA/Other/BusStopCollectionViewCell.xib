@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Vision-Bold.otf">
+            <string>Vision-Bold</string>
+        </array>
+        <array key="fa-solid-900.ttf">
+            <string>FontAwesome5Free-Solid</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="E5e-WN-Xjo" customClass="BusStopCell" customModule="ETA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmY-zg-mpx">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="55"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZT9-eE-lpD">
+                                <rect key="frame" x="14.5" y="18" width="46" height="19"/>
+                                <fontDescription key="fontDescription" name="Vision-Bold" family="Vision" pointSize="19"/>
+                                <color key="textColor" name="Linen"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="Navy Blue"/>
+                        <constraints>
+                            <constraint firstItem="ZT9-eE-lpD" firstAttribute="centerX" secondItem="AmY-zg-mpx" secondAttribute="centerX" id="KFA-sm-gTG"/>
+                            <constraint firstAttribute="width" constant="75" id="PJk-ES-2AD"/>
+                            <constraint firstItem="ZT9-eE-lpD" firstAttribute="centerY" secondItem="AmY-zg-mpx" secondAttribute="centerY" id="ka0-mh-vfT"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9b-Ro-OS1">
+                        <rect key="frame" x="353" y="13.5" width="14" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="14" id="Z9X-ZK-6H1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="28"/>
+                        <color key="textColor" name="Navy Blue"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37U-yv-FtT">
+                        <rect key="frame" x="83" y="19.5" width="254" height="16"/>
+                        <fontDescription key="fontDescription" name="Vision-Bold" family="Vision" pointSize="16"/>
+                        <color key="textColor" name="Navy Blue"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" name="Linen"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="C9b-Ro-OS1" secondAttribute="trailing" constant="8" id="2FS-Ub-R6C"/>
+                <constraint firstItem="AmY-zg-mpx" firstAttribute="leading" secondItem="E5e-WN-Xjo" secondAttribute="leading" id="8Or-vZ-rl2"/>
+                <constraint firstItem="C9b-Ro-OS1" firstAttribute="centerY" secondItem="E5e-WN-Xjo" secondAttribute="centerY" id="UUU-XF-Sm9"/>
+                <constraint firstAttribute="bottom" secondItem="AmY-zg-mpx" secondAttribute="bottom" id="WQe-Oy-YO7"/>
+                <constraint firstItem="AmY-zg-mpx" firstAttribute="top" secondItem="E5e-WN-Xjo" secondAttribute="top" id="cm7-E1-je7"/>
+                <constraint firstItem="37U-yv-FtT" firstAttribute="centerY" secondItem="E5e-WN-Xjo" secondAttribute="centerY" id="hmX-91-SnW"/>
+                <constraint firstItem="C9b-Ro-OS1" firstAttribute="leading" secondItem="37U-yv-FtT" secondAttribute="trailing" constant="16" id="iLp-8c-g9g"/>
+                <constraint firstItem="37U-yv-FtT" firstAttribute="leading" secondItem="AmY-zg-mpx" secondAttribute="trailing" constant="8" id="iw8-BI-Dg4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Kha-o9-yZQ"/>
+            <size key="customSize" width="244" height="50"/>
+            <connections>
+                <outlet property="busStopCodeLabel" destination="ZT9-eE-lpD" id="KAE-ZZ-q34"/>
+                <outlet property="busStopNameLabel" destination="37U-yv-FtT" id="4vc-qr-fnF"/>
+            </connections>
+            <point key="canvasLocation" x="119.2" y="-254.12293853073464"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Linen">
+            <color red="0.96862745098039216" green="0.92941176470588238" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Navy Blue">
+            <color red="0.23921568627450981" green="0.29411764705882354" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
